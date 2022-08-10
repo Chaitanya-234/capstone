@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>Cash Payment</title>
+	<style type="text/css">
+		body{
+			background-image: url('img/bk.jpg');
+		}
+		.title{
+			text-align: center;
+			max-width: 720px;
+			padding: 10px;
+			margin-left: 340px;
+			color: white;
+			background-color: blue;
+		}
+		input[type=text], select, .pay {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+
+}
+.container {
+  position: center;
+  margin-left: 400px;
+  border-radius: 20px;
+  right: 0;
+  margin-top: 50px;
+ 
+  max-width: 500px;
+  padding: 50px;
+  background-color: white;
+}
+input[type=submit] {
+  width: 45%;
+  
+background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);
+    color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+input[type=button] {
+  width: 45%;
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  
+background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);
+  cursor: pointer;
+}
+
+input[type=submit]:hover,input[type=button]:hover {
+
+background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); 
+
+}
+
+
+	</style>
+	<script type="text/javascript">
+		
+		
+		function Pay() {
+
+				alert("Payment Done");
+		
+		}
+		
+		function home(){
+			location.href = "Toll.html";
+		}
+
+		
+	</script>
+</head>
+<body>
+	<div class="title">
+	<h1 ><b>NATIONAL HIGHWAY AUTHORITY OF INDIA</b></h1>
+	<h1><b>भारतीय राष्ट्रिय राजमार्ग प्राधिकरण  </b></h1>
+	</div>
+<form  class="container" action="connect.php" method="POST">
+	
+	<label>Name</label><br>
+	<select name="nom" require>
+	<option disabled selected>Choose</option>
+	<option>Ms</option>
+	<option>Mr</option>
+	<option>Miss</option>
+	<option>Mrs</option>
+	</select><br>
+	<input type="text" name="firstName" placeholder="First Name"><br>
+	<input type="text" name="lastName" placeholder="Last Name">
+	<br>
+	<label>Vechicle Type</label><br>
+	<select name="vt" required>
+	<option id="null" disabled selected>Choose</option>
+	<option id="car">Car </option>
+	<option id="jeep">Jeep</option>
+	<option id="van">Van</option>
+	<option id="truck">Truck</option>
+	<option id="travel">Travels</option>
+	</select><br>
+	<label>Applied Tax</label><br>
+	<input type="text" name="tax" id="money"  >
+	<br>
+	<label>Vechicle No</label><br>
+	
+	<input type="text" name="vechicleNo">
+	<br>
+	<input type="submit" name="" id="pay" value="Procced to Pay" onclick="Pay()">
+		<input type="button" name="" id="hoome" style="float:right;" value="Back" onclick="home()">
+</form>
+</body>
+</html>

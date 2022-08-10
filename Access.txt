@@ -1,0 +1,5 @@
+pass= XHof7YnkK9EBalSmBULe
+user=uge66coybsyu00cz
+db name=bggdwkmz9yilvfw1m8ww
+url=mysql://uge66coybsyu00cz:XHof7YnkK9EBalSmBULe@bggdwkmz9yilvfw1m8ww-mysql.services.clever-cloud.com:3306/bggdwkmz9yilvfw1m8ww
+host=bggdwkmz9yilvfw1m8ww-mysql.services.clever-cloud.com

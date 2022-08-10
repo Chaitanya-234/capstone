@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.2.6/jquery.min.js"> </script>
+	<?php
+	$user = 'root';
+	$password = ''; 
+	$database = 'capstone'; 
+	$servername='localhost';
+	$con = new mysqli($servername, $user,$password, $database);
+
+  	if (!$con)
+    { 
+    die ("Could not connect: ".mysql_error());
+    }
+    if($_SERVER["REQUEST_METHOD"] == "POST"){
+
+    $stmt="SELECT * FROM fastag WHERE bc LIKE ".$_POST['barcd'] or die (mysqli_error());
+    $result = $con->query($stmt);
+    //$result= $stmt->fetchALL();
+    $rows=$result->fetch_assoc();
+    }
+
+	?>
+	
+	<style type="text/css">
+		body{
+			background-image: url('img/bk.jpg');
+			background-size: auto;
+			background-repeat: no-repeat;
+		}
+		.title{
+			text-align: center;
+			max-width: 720px;
+			padding: 10px;
+			margin-left: 50px;
+			color: white;
+			background-color: blue;
+		}
+		input[type=text], select, .pay {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+
+
+}
+.pay{
+	size: 30px;
+}
+.container {
+  position: center;
+  border-radius: 20px;
+  right: 0;
+  margin: 20px;
+  max-width: 800px;
+  padding: 50px;
+  background-color: white;
+}
+input[type=submit]{
+  width: 45%;
+  background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); 
+  color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+}
+input[type=button],.dis  {
+  width: 45%;
+  color: black;
+  padding: 14px 20px;
+  border: none;
+  border-radius: 4px;
+background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); 
+}
+.print{
+	 width: 45%;
+  color: black;
+  padding: 14px 20px;
+  margin-left: 180px;
+  border: none;
+  border-radius: 4px;
+background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); 
+background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); 
+
+}
+input[type=submit]:hover,input[type=button]:hover {
+  background: #833ab4; 
+background: -webkit-linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); 
+background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); 
+
+}
+
+
+	</style>
+	<script type="text/javascript">
+	
+		function bar(){
+		if(document.getElementById("fasttag").checked==true){
+
+				var bar=document.getElementById("barcode");
+				bar.style.visibility="visible";
+				var btn=document.getElementById("bttn");
+				btn.style.visibility="visible";
+				var buttm=document.getElementById("bttnn");
+				buttm.style.visibility="visible";
+				
+				
+
+			}
+			else{
+					var barg=document.getElementById("barcode");
+				barg.style.visibility="hidden";
+				var bn=document.getElementById("bttn");
+				bn.style.visibility="hidden";
+				
+			}
+			
+			
+	}
+		
+		function Pay() {
+			document.Form1.action= "connect.php";
+			
+			if(document.getElementById("cash").checked==true)
+			{
+				alert("Payment Done");
+				document.Form1.action= "connect.php";
+				location.href = "connect.php";
+				
+			
+
+			}
+			else if(document.getElementById("card").checked==true){
+				
+				 location.href = "Payment.html";
+
+			}
+			else if(document.getElementById("fasttag").checked==true){
+				document.Form1.action= "connect.php";
+
+				alert("Payment Done");
+
+			}
+
+
+		}
+		function printt(){
+			var pay=document.getElementById("pay");
+			pay.style.visibility="hidden";
+			var print=document.getElementById("print");
+			print.style.visibility="hidden";
+			var home=document.getElementById("hoome");
+			home.style.visibility="hidden";
+			//var bnn=document.getElementById("bttnn");
+			//	bnn.style.visibility="hidden";
+			window.print();
+			pay.style.visibility="visible";
+			print.style.visibility="visible";
+			home.style.visibility="visible";
+		}
+		
+		function home(){
+			location.href = "Home.html";
+		}
+
+		function fast(){
+			document.Form1.action = "";
+
+			
+			}
+		function fasttag(){
+			var a=document.getElementById("a1").innerHTML;
+			var b=document.getElementById("a2").innerHTML;
+			var c=document.getElementById("a3").innerHTML;
+			var d=document.getElementById("a4").innerHTML;
+			var e=document.getElementById("a5").innerHTML;
+			document.getElementById("nommi").selectedIndex=a;
+			document.getElementById("fname").value=b;
+			document.getElementById("lname").value=c;
+			document.getElementById("vtt").selectedIndex=d;
+			document.getElementById("vno").value=e;
+   		}
+		
+		
+		
+		
+
+		
+	</script>
+</head>
+<body>
+	<div class="title">
+	<h1 ><b>NATIONAL HIGHWAY AUTHORITY OF INDIA</b></h1>
+	<h1><b>भारतीय राष्ट्रिय राजमार्ग प्राधिकरण  </b></h1>
+	</div>
+   <form name="Form1" class="container" action="<?php echo htmlspecialchars($_SERVER["PHP_SELF"]); ?>" method="POST">
+
+	<div class="pay">
+	<input type="radio" name="pay" checked="true" value="cash" id="cash" onchange="bar()">Cash
+	<input type="radio" name="pay" value="card" id="card" onchange="bar()">Card
+	<input type="radio" name="pay" value="fasttag" id="fasttag" onchange="bar()">FastTag
+	</div>
+	<input type="text" id="barcode" name="barcd" style="visibility: hidden" >
+	<input type="submit" id="bttn" name="btn" style="visibility: hidden" value="Fetch" onclick="fast()">
+	<br>
+	<label>Name</label><br>
+	<select id="nommi" name="nom">
+	<option disabled selected>Choose</option>
+	<option>Ms</option>
+	<option>Mr</option>
+	<option>Miss</option>
+	<option>Mrs</option>
+	</select>
+	<input type="text" id="fname" name="firstName" placeholder="First Name">
+	<input type="text" id="lname" name="lastName" placeholder="Last Name">
+	<br>
+	<label>Vechicle Type</label>
+	<select id="vtt" name="vt">
+	<option id="null" disabled selected>Choose</option>
+	<option id="car">Car </option>
+	<option id="jeep">Jeep</option>
+	<option id="van">Van</option>
+	<option id="truck">Truck</option>
+	<option id="travel">Travels</option>
+	<option></option>
+	</select><br>
+	<label>Applied Tax</label><br>
+	<input type="text" name="tax" id="money"  >
+	<br>
+	<label>Vechicle No</label><br>
+	
+	<input type="text" id="vno" name="vechicleNo"><br>
+	<br>
+	<input type="submit" name="" id="pay" value="Procced to Pay" onclick="Pay()">
+	<input type="button" class="print" id="print" style="float:left" value="Print" onclick="printt()">
+		<input type="button" name="" id="hoome" style="float:center" value="Home" onclick="home()">
+
+
+</form>
+<input type="button" id="bttnn" class="dis" style="visibility: hidden;" name="btnn" style="float:right" style="visibility: hidden" value="Display" onclick="fasttag()">
+<h1 id="a1" style="visibility: hidden" ><?php echo $rows['Nom'];?></h1>
+<h1 id="a2" style="visibility: hidden" ><?php echo $rows['FirstName'];?></h1>
+<h1 id="a3" style="visibility: hidden" ><?php echo $rows['LatName'];?></h1>
+<h1 id="a4" style="visibility: hidden" ><?php echo $rows['VecType'];?></h1>
+<h1 id="a5" style="visibility: hidden" ><?php echo $rows['VecNo'];?></h1>
+        
+
+</body>
+</html>

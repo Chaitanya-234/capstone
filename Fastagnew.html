@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Fastag New</title>
+	<meta charset="utf-8">
+	<style type="text/css">
+		body{
+			background-image: url('img/highway2.jpg');
+			background-size: auto;
+			 background-size: 1350px 1100px;
+			background-repeat: no-repeat;
+		}
+		.title{
+			text-align: center;
+			max-width: 720px;
+			padding: 10px;
+			margin-left: 265px;
+			color: white;
+			background-color: blue;
+		}
+		input[type=text], select {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+.container {
+  position: center;
+  border-radius: 20px;
+  margin-top: 80px;
+  margin-left: 300px;
+  max-width: 600px;
+  padding: 50px;
+  background-color: white;
+}
+input[type=submit]:hover,input[type=button]:hover {
+  background: #833ab4; 
+background: linear-gradient(to right, #fcb045, #fd1d1d, #833ab4); 
+}
+		input[type=submit]{
+  width: 45%;
+  background: #5433FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+		input[type=button]{
+  width: 45%;
+  background: #5433FF;  /* fallback for old browsers */
+  background: -webkit-linear-gradient(to right, #A5FECB, #20BDFF, #5433FF);  /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(to right, #A5FECB, #20BDFF, #5433FF); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+    color: black;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+	</style>
+</head>
+<script type="text/javascript">
+
+	function back() {
+		 location.href="Toll.html";
+	}
+</script>
+<body>
+<div class="title">
+	<h1 ><b>NATIONAL HIGHWAY AUTHORITY OF INDIA</b></h1>
+	<h1><b>भारतीय राष्ट्रिय राजमार्ग प्राधिकरण  </b></h1>
+	</div>
+   <form name="Form1" class="container" action="addfastag.php" method="POST">
+   
+	<label>Name</label><br>
+	<select id="nommi" name="nom">
+	<option disabled selected>Choose</option>
+	<option name="ms">Ms</option>
+	<option name="mr">Mr</option>
+	<option name="miss">Miss</option>
+	<option name="mrs">Mrs</option>
+	</select>
+	<input type="text" id="fname" name="firstName" placeholder="First Name">
+	<input type="text" id="lname" name="lastName" placeholder="Last Name">
+	<br>
+	<label>Vechicle Type</label>
+	<select id="vtt" name="vt">
+	<option disabled selected>Choose</option>
+	<option name="car">Car </option>
+	<option name="jeep">Jeep</option>
+	<option name="van">Van</option>
+	<option name="truck">Truck</option>
+	<option name="travel">Travels</option>
+	<option></option>
+	</select><br>
+	<label>Vechicle No</label><br>
+	<input type="text" id="vno" name="vechicleNo">
+	<br>
+	<input type="hidden" id="barcode" name="barcd" >
+	<label>Add Amount</label><br>
+	<input type="text" id="amoun" name="amount" onblur="generate()">
+	<br>
+	<input type="submit" name="" id="pay" value="Procced to Add" >
+	<input type="button" name="" id="pay" value="Back" onclick="back()">
+</body>
+</html>
